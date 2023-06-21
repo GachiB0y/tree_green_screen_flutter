@@ -17,43 +17,46 @@ class StructureScreen extends StatelessWidget {
       appBar: AppBar(title:const Text('Структура организации', style: style,),backgroundColor: Colors.green,),
       body: ClipRRect(
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding:  EdgeInsets.only(top:8.0),
-                    child: _StructRowWidget(
-                      isGeneral: true,
+        child: SingleChildScrollView(
+          child: Container(
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding:  EdgeInsets.only(top:8.0),
+                      child: _StructRowWidget(
+                        isGeneral: true,
+                      ),
                     ),
-                  ),
-                  const Divider(height: 3.0,),
-                  ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount:  4,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
-                        child: _StructRowWidget(
-                          index: index,
-                          isGeneral: false,
-                          name: name,
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                    const Divider(height: 3.0,),
+                    const SizedBox(height: 10.0,),
+                    ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount:  4,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: _StructRowWidget(
+                            index: index,
+                            isGeneral: false,
+                            name: name,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
