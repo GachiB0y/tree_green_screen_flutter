@@ -22,7 +22,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
           buildItem(
               index: 0,
               img: Image.asset(
-                'assets/images/menu_icons.png',
+                'assets/images/menu_icon_grey.png',
                 width: 30,
                 height: 30,
               ),
