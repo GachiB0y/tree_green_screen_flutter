@@ -14,59 +14,62 @@ class StructureScreen extends StatelessWidget {
     ];
     const style = TextStyle(color: Colors.white);
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: ColorsForWidget.colorGreen,
       appBar: AppBar(
         title: const Text(
           'Структура организации',
           style: style,
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: ColorsForWidget.colorGreen,
       ),
-      body: ClipRRect(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        child: SingleChildScrollView(
-          child: Container(
-            // height: MediaQuery.of(context).size.height,
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 27.0, left: 16.0, right: 16.0, bottom: 17.0),
-              child: Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: ColorsForWidget.colorForBackgroundStruct,
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const _StructRowWidget(
-                      isGeneral: true,
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    const Divider(
-                      height: 1.0,
-                    ),
-                    const SizedBox(
-                      height: 7.5,
-                    ),
-                    ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: 4,
-                      itemBuilder: (BuildContext context, int index) {
-                        return _StructRowWidget(
-                          index: index,
-                          isGeneral: false,
-                          name: name,
-                        );
-                      },
-                    ),
-                  ],
+      body: Padding(
+        padding: const EdgeInsets.only(top:12.0),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: SingleChildScrollView(
+            child: Container(
+              // height: MediaQuery.of(context).size.height,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 27.0, left: 16.0, right: 16.0, bottom: 17.0),
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: ColorsForWidget.colorForBackgroundStruct,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const _StructRowWidget(
+                        isGeneral: true,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      const Divider(
+                        height: 1.0,
+                      ),
+                      const SizedBox(
+                        height: 7.5,
+                      ),
+                      ListView.builder(
+                        physics:const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        itemBuilder: (BuildContext context, int index) {
+                          return _StructRowWidget(
+                            index: index,
+                            isGeneral: false,
+                            name: name,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -148,8 +151,6 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
         ),
         widget.isGeneral
             ? Container(
-                padding:
-                    const EdgeInsets.only(left: 16.0, bottom: 16.0, top: 16.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -182,8 +183,6 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
             : Padding(
                 padding: const EdgeInsets.only(left: 21.0, bottom: 16.0),
                 child: Container(
-                  padding: const EdgeInsets.only(
-                      left: 16.0, bottom: 16.0, top: 16.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
@@ -225,28 +224,31 @@ class _DropListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: items.length,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 17.0),
-            child: SizedBox(
-              height: 18,
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    backgroundColor: Colors.green,
-                    radius: 6.5,
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Text(items[index]),
-                ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: items.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 17.0),
+              child: SizedBox(
+                height: 18,
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: Colors.green,
+                      radius: 6.5,
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Text(items[index]),
+                  ],
+                ),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }

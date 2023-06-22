@@ -12,94 +12,97 @@ class UserFirstScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsForWidget.colorGreen,
       appBar: const _AppBarFirstScreen(),
-      body: ClipRRect(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        child: Container(
-          color: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.only(top:19.0),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           child: Container(
-              margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
-              child: CustomScrollView(
-                slivers: <Widget>[
-                  SliverPadding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    sliver: ColorSilverGridWidget(),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height / 5.23,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF6FD4D4),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Stack(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 16.0, top: 16.0),
-                            child: Text(
-                              'Grass Википедия',
-                              softWrap: true,
-                              maxLines: 2,
-                              style: style,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          Align(
-                              alignment: Alignment.bottomRight,
-                              child: Image.asset(
-                                  'assets/images/first_screen/bus.png')),
-                          ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(14)),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                onTap: () {
-                                  print('CLICK');
-                                },
+            color: Colors.white,
+            child: Container(
+                margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
+                child: CustomScrollView(
+                  slivers: <Widget>[
+                    SliverPadding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      sliver: ColorSilverGridWidget(),
+                    ),
+                    SliverToBoxAdapter(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 5.23,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF58C18F),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Stack(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 16.0, top: 16.0),
+                              child: Text(
+                                'Grass Википедия',
+                                softWrap: true,
+                                maxLines: 2,
+                                style: style,
+                                textAlign: TextAlign.left,
                               ),
                             ),
-                          ),
-                        ],
+                            Align(
+                                alignment: Alignment.bottomRight,
+                                child: Image.asset(
+                                    'assets/images/books.png')),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(14)),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    print('CLICK');
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
-              // Column(
-              //   children: [
-              //     ColorGridWidget(),
-              //     const SizedBox(
-              //       height: 14,
-              //     ),
-              //     Container(
-              //       height: MediaQuery.of(context).size.height / 5.23,
-              //       decoration: BoxDecoration(
-              //         color: const Color(0xFF6FD4D4),
-              //         borderRadius: BorderRadius.circular(14),
-              //       ),
-              //       child: Stack(
-              //         children: [
-              //           const Padding(
-              //             padding: EdgeInsets.only(left: 16.0, top: 16.0),
-              //             child: Text(
-              //               'Grass Википедия',
-              //               softWrap: true,
-              //               maxLines: 2,
-              //               style: style,
-              //               textAlign: TextAlign.left,
-              //             ),
-              //           ),
-              //           Align(
-              //               alignment: Alignment.bottomRight,
-              //               child: Image.asset(
-              //                   'assets/images/first_screen/bus.png')),
-              //         ],
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              ),
+                  ],
+                )
+                // Column(
+                //   children: [
+                //     ColorGridWidget(),
+                //     const SizedBox(
+                //       height: 14,
+                //     ),
+                //     Container(
+                //       height: MediaQuery.of(context).size.height / 5.23,
+                //       decoration: BoxDecoration(
+                //         color: const Color(0xFF6FD4D4),
+                //         borderRadius: BorderRadius.circular(14),
+                //       ),
+                //       child: Stack(
+                //         children: [
+                //           const Padding(
+                //             padding: EdgeInsets.only(left: 16.0, top: 16.0),
+                //             child: Text(
+                //               'Grass Википедия',
+                //               softWrap: true,
+                //               maxLines: 2,
+                //               style: style,
+                //               textAlign: TextAlign.left,
+                //             ),
+                //           ),
+                //           Align(
+                //               alignment: Alignment.bottomRight,
+                //               child: Image.asset(
+                //                   'assets/images/first_screen/bus.png')),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                ),
+          ),
         ),
       ),
     );
@@ -130,14 +133,14 @@ class ColorSilverGridWidget extends StatelessWidget {
   ];
 
   final List<String> pathImages = const [
-    'assets/images/first/note.png',
-    'assets/images/first/thumbs_up.png',
-    'assets/images/first/airplane.png',
-    'assets/images/first/globe.png',
-    'assets/images/first/bus.png',
-    'assets/images/first/alarm.png',
-    'assets/images/first/tree_structure.png',
-    'assets/images/first/map.png',
+    'assets/images/note.png',
+    'assets/images/thumbs_up.png',
+    'assets/images/airplane.png',
+    'assets/images/globe.png',
+    'assets/images/bus.png',
+    'assets/images/alarm.png',
+    'assets/images/tree_structure.png',
+    'assets/images/map.png',
   ];
 
   @override
@@ -173,7 +176,7 @@ class ColorSilverGridWidget extends StatelessWidget {
               ),
               Align(
                   alignment: Alignment.bottomRight,
-                  child: Image.asset('assets/images/bus.png')),
+                  child: Image.asset(pathImages[index])),
               ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(14)),
                 child: Material(
@@ -276,26 +279,49 @@ class _AppBarFirstScreen extends StatelessWidget
   const _AppBarFirstScreen({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(70);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       actions: <Widget>[
-        ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(20)),
-          child: Container(
-            color: const Color.fromARGB(30, 255, 255, 255),
-            child: IconButton(
-                icon: const Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
-                onPressed: () {}),
-          ),
-        )
+
       ],
       leading: const Avatar(),
+      title: Row(children: [
+         Text(
+          'Александр',
+          style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w600),
+        ),
+         SizedBox(width: 4.0),
+         Padding(
+           padding: EdgeInsets.only(right: 16.0),
+           child: SizedBox(
+            height: 24,
+            width: 24,
+            child:  Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+              size: 16,
+            ),
+        ),
+         ),
+        Container(
+          height: 34,
+          width: 34,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(70, 255, 255, 255),
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: IconButton(
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {}),
+        )
+      ],
+      ),
       backgroundColor: ColorsForWidget.colorGreen,
     );
   }
@@ -306,49 +332,39 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // margin: EdgeInsets.all(10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Stack(
-            children: [
-              CircleAvatar(
+    return Stack(
+      children: [
+        Container(
+        margin: EdgeInsets.only(left:16.0,),
+        child:
+            Center(
+              child: CircleAvatar(
+                radius: 17,
                 child: Image.asset(
-                  'assets/images/avatar.png',
+                  'assets/images/man.png',
                   color: Colors.grey,
+                  fit: BoxFit.fill,
                 ),
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                    padding: EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: const Text(
-                      '123',
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
-                    )),
-              ),
-            ],
-          ),
-          const SizedBox(width: 12.0),
-          const Text(
-            'Александр',
-            style: TextStyle(color: Colors.white),
-          ),
-          const SizedBox(width: 12.0),
-          const Icon(
-            Icons.arrow_forward_ios,
-            color: Colors.white,
-          )
-        ],
+            ),
       ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Container(
+              padding: EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: const Text(
+                '123',
+                style: TextStyle(
+                    fontSize: 11,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600),
+              )),
+        ),
+    ],
     );
   }
 }
