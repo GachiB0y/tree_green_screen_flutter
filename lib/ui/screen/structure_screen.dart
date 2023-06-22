@@ -172,29 +172,9 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
                       },
                     ),
                     dropdownOpen == true
-                        ? ListView.builder(
-                            itemCount: items.length,
-                            shrinkWrap: true,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 17.0),
-                                child: SizedBox(
-                                  height: 18,
-                                  child: Row(
-                                    children: [
-                                      const CircleAvatar(
-                                        backgroundColor: Colors.green,
-                                        radius: 6.5,
-                                      ),
-                                      const SizedBox(
-                                        width: 12,
-                                      ),
-                                      Text(items[index]),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            })
+                        ? _DropListElement(
+                            items: items,
+                          )
                         : const SizedBox.shrink(),
                   ],
                 ),
@@ -209,7 +189,6 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ListTile(
                         leading: const Text('Подразделения', style: style),
@@ -227,29 +206,9 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
                         },
                       ),
                       dropdownOpen == true
-                          ? ListView.builder(
-                              itemCount: items.length,
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 17.0),
-                                  child: SizedBox(
-                                    height: 18,
-                                    child: Row(
-                                      children: [
-                                        const CircleAvatar(
-                                          backgroundColor: Colors.green,
-                                          radius: 6.5,
-                                        ),
-                                        const SizedBox(
-                                          width: 12,
-                                        ),
-                                        Text(items[index]),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              })
+                          ? _DropListElement(
+                              items: items,
+                            )
                           : const SizedBox.shrink(),
                     ],
                   ),
@@ -257,5 +216,37 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
               ),
       ],
     );
+  }
+}
+
+class _DropListElement extends StatelessWidget {
+  final List<String> items;
+  const _DropListElement({super.key, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: items.length,
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 17.0),
+            child: SizedBox(
+              height: 18,
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                    backgroundColor: Colors.green,
+                    radius: 6.5,
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  Text(items[index]),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

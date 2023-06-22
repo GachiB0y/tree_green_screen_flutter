@@ -78,7 +78,6 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     required Image img,
   }) {
     final isSelected = index == widget.index;
-    const color = ColorsForWidget;
     return GestureDetector(
       onTap: () => widget.onChangeTab(index),
       child: Column(
