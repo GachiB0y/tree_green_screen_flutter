@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tree_green_screen_flutter/theme/colors_theme.dart';
+import 'package:tree_green_screen_flutter/theme/style_text.dart';
 
 class StructureScreen extends StatelessWidget {
   const StructureScreen({Key? key}) : super(key: key);
@@ -12,24 +13,22 @@ class StructureScreen extends StatelessWidget {
       "Шалаев Алексей",
       "Климов Алексей",
     ];
-    const style = TextStyle(color: Colors.white);
     return Scaffold(
       backgroundColor: ColorsForWidget.colorGreen,
       appBar: AppBar(
         title: const Text(
           'Структура организации',
-          style: style,
+          style: StyleTextCustom.textAppBar,
         ),
         backgroundColor: ColorsForWidget.colorGreen,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top:12.0),
+        padding: const EdgeInsets.only(top: 12.0),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           child: SingleChildScrollView(
             child: Container(
-              // height: MediaQuery.of(context).size.height,
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.only(
@@ -57,7 +56,7 @@ class StructureScreen extends StatelessWidget {
                         height: 7.5,
                       ),
                       ListView.builder(
-                        physics:const NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: 4,
                         itemBuilder: (BuildContext context, int index) {
@@ -220,7 +219,7 @@ class _StructRowWidgetState extends State<_StructRowWidget> {
 
 class _DropListElement extends StatelessWidget {
   final List<String> items;
-  const _DropListElement({super.key, required this.items});
+  const _DropListElement({required this.items});
 
   @override
   Widget build(BuildContext context) {
