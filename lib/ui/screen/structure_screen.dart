@@ -16,11 +16,24 @@ class StructureScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsForWidget.colorGreen,
       appBar: AppBar(
+        leadingWidth: 24,
         title: const Text(
           'Структура организации',
           style: StyleTextCustom.textAppBar,
         ),
         backgroundColor: ColorsForWidget.colorGreen,
+        leading: SizedBox(
+          height: 24,
+          width: 24,
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+              size: 16,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 12.0),

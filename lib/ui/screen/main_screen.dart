@@ -18,8 +18,36 @@ class _UserMainScreenState extends State<UserMainScreen> {
 
   var pages = <Widget>[
     const UserFirstScreen(),
+    const Text(
+      'Grass Coin',
+    ),
+    const Text(
+      'Новости',
+    ),
+    const Text(
+      'Аккаунт',
+    ),
+  ];
+  var page2 = <Widget>[
     const ReferencesScreen(),
+    const Text(
+      'Grass Coin',
+    ),
+    const Text(
+      'Новости',
+    ),
+    const Text(
+      'Аккаунт',
+    ),
+  ];
+  var page3 = <Widget>[
     const StructureScreen(),
+    const Text(
+      'Grass Coin',
+    ),
+    const Text(
+      'Новости',
+    ),
     const Text(
       'Аккаунт',
     ),
@@ -28,6 +56,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
   void onChangeTab(int index) {
     setState(() {
       selectedPageIndex = index;
+      print(index);
     });
   }
 
@@ -35,7 +64,15 @@ class _UserMainScreenState extends State<UserMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      body: pages[selectedPageIndex],
+      body: Navigator(
+        onGenerateRoute: (settings) {
+          List<Widget> screen = pages;
+          if (settings.name == 'page2') screen = page2;
+          if (settings.name == 'page3') screen = page3;
+          return MaterialPageRoute(builder: (_) => screen[selectedPageIndex]);
+        },
+      ),
+      // pages[selectedPageIndex],
       bottomNavigationBar: SizedBox(
         height: MediaQuery.of(context).size.height * 0.1,
         child: TabBarWidget(

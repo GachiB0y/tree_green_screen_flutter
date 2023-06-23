@@ -21,86 +21,52 @@ class UserFirstScreen extends StatelessWidget {
           child: Container(
             color: Colors.white,
             child: Container(
-                margin:
-                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
-                child: CustomScrollView(
-                  slivers: <Widget>[
-                    const SliverPadding(
-                      padding: EdgeInsets.only(bottom: 16.0),
-                      sliver: ColorSilverGridWidget(),
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 5.23,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF58C18F),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Stack(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0, top: 16.0),
-                              child: Text(
-                                'Grass Википедия',
-                                softWrap: true,
-                                maxLines: 2,
-                                style: style,
-                                textAlign: TextAlign.left,
+              margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  const SliverPadding(
+                    padding: EdgeInsets.only(bottom: 16.0),
+                    sliver: ColorSilverGridWidget(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 5.23,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF58C18F),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Stack(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 16.0, top: 16.0),
+                            child: Text(
+                              'Grass Википедия',
+                              softWrap: true,
+                              maxLines: 2,
+                              style: style,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Align(
+                              alignment: Alignment.bottomRight,
+                              child: Image.asset('assets/images/books.png')),
+                          ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(14)),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: () {},
                               ),
                             ),
-                            Align(
-                                alignment: Alignment.bottomRight,
-                                child: Image.asset('assets/images/books.png')),
-                            ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(14)),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                )
-                // Column(
-                //   children: [
-                //     ColorGridWidget(),
-                //     const SizedBox(
-                //       height: 14,
-                //     ),
-                //     Container(
-                //       height: MediaQuery.of(context).size.height / 5.23,
-                //       decoration: BoxDecoration(
-                //         color: const Color(0xFF6FD4D4),
-                //         borderRadius: BorderRadius.circular(14),
-                //       ),
-                //       child: Stack(
-                //         children: [
-                //           const Padding(
-                //             padding: EdgeInsets.only(left: 16.0, top: 16.0),
-                //             child: Text(
-                //               'Grass Википедия',
-                //               softWrap: true,
-                //               maxLines: 2,
-                //               style: style,
-                //               textAlign: TextAlign.left,
-                //             ),
-                //           ),
-                //           Align(
-                //               alignment: Alignment.bottomRight,
-                //               child: Image.asset(
-                //                   'assets/images/first_screen/bus.png')),
-                //         ],
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -122,12 +88,12 @@ class ColorSilverGridWidget extends StatelessWidget {
 
   final List<String> text = const [
     'Справки\nи заявления',
-    'Бережливое\nпроизврдство',
+    'Бережливое\nпроизводство',
     'График\nотпусков',
     'Командировки',
     'Расписание\nавтобусов',
     'Режим работы',
-    'Структура\nорганизации',
+    'Структура\nорганизаций',
     'Интерактивная\nкарта помещений',
   ];
 
@@ -183,7 +149,13 @@ class ColorSilverGridWidget extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      if (index == 0) {
+                        Navigator.pushNamed(context, 'page2');
+                      } else if (index == 6) {
+                        Navigator.pushNamed(context, 'page3');
+                      }
+                    },
                   ),
                 ),
               ),
@@ -194,84 +166,6 @@ class ColorSilverGridWidget extends StatelessWidget {
     );
   }
 }
-
-// class ColorGridWidget extends StatelessWidget {
-//   final List<Color> colors = const [
-//     Color(0xFF6FD4D4),
-//     Color(0xFF72A5F4),
-//     Color(0xFF9068F2),
-//     Color(0xFFE4B537),
-//     Color(0xFF90ADBF),
-//     Color(0xFF58C3E5),
-//     Color(0xFFE3C1A6),
-//     Color(0xFFFF9900),
-//   ];
-
-//   final List<String> text = const [
-//     'Справки\nи заявления',
-//     'Бережливое\nпроизврдство',
-//     'График\nотпусков',
-//     'Командировки',
-//     'Расписание\nавтобусов',
-//     'Режим работы',
-//     'Структура\nорганизации',
-//     'Интерактивная\nкарта помещений',
-//   ];
-
-//   final List<String> pathImages = const [
-//     'assets/images/first/note.png',
-//     'assets/images/first/thumbs_up.png',
-//     'assets/images/first/airplane.png',
-//     'assets/images/first/globe.png',
-//     'assets/images/first/bus.png',
-//     'assets/images/first/alarm.png',
-//     'assets/images/first/tree_structure.png',
-//     'assets/images/first/map.png',
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GridView.builder(
-//       scrollDirection: Axis.vertical,
-//       shrinkWrap: true,
-//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//         crossAxisCount: 2,
-//         childAspectRatio: 1.44,
-//         crossAxisSpacing: 13,
-//         mainAxisSpacing: 14,
-//       ),
-//       itemCount: colors.length,
-//       itemBuilder: (BuildContext context, int index) {
-//         // обычный контейнер
-//         return Container(
-//           // height: MediaQuery.of(context).size.height / 5.23,
-//           // width: MediaQuery.of(context).size.width / 2.27,
-//           decoration: BoxDecoration(
-//             color: colors[index],
-//             borderRadius: BorderRadius.circular(14),
-//           ),
-//           child: Stack(
-//             children: [
-//               Padding(
-//                 padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-//                 child: Text(
-//                   text[index],
-//                   softWrap: true,
-//                   maxLines: 2,
-//                   style: style,
-//                   textAlign: TextAlign.left,
-//                 ),
-//               ),
-//               Align(
-//                   alignment: Alignment.bottomRight,
-//                   child: Image.asset('assets/images/bus.png')),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }
 
 class _AppBarFirstScreen extends StatelessWidget
     implements PreferredSizeWidget {
@@ -306,19 +200,22 @@ class _AppBarFirstScreen extends StatelessWidget
         ),
       ],
       leading: const Avatar(),
-      title: const Row(
+      title: Row(
         children: [
           Text('Александр', style: StyleTextCustom.textAppBar),
           SizedBox(width: 4.0),
           Padding(
             padding: EdgeInsets.only(right: 16.0),
-            child: SizedBox(
-              height: 24,
-              width: 24,
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.white,
-                size: 16,
+            child: GestureDetector(
+              onTap: () {},
+              child: SizedBox(
+                height: 24,
+                width: 24,
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white,
+                  size: 16,
+                ),
               ),
             ),
           ),
