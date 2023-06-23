@@ -4,13 +4,14 @@ class DigitInputWidget extends StatefulWidget {
   final int length;
   final TextEditingController controller;
 
-  DigitInputWidget({required this.length, required this.controller});
+  const DigitInputWidget(
+      {super.key, required this.length, required this.controller});
 
   @override
-  _DigitInputWidgetState createState() => _DigitInputWidgetState();
+  DigitInputWidgetState createState() => DigitInputWidgetState();
 }
 
-class _DigitInputWidgetState extends State<DigitInputWidget> {
+class DigitInputWidgetState extends State<DigitInputWidget> {
   List<String> digits = [];
 
   @override

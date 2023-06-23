@@ -5,7 +5,7 @@ import 'package:tree_green_screen_flutter/ui/screen/structure_screen.dart';
 import 'package:tree_green_screen_flutter/ui/screen/user_frist_screen.dart';
 
 class UserMainScreen extends StatefulWidget {
-  UserMainScreen({
+  const UserMainScreen({
     Key? key,
   }) : super(key: key);
 
@@ -17,9 +17,9 @@ class _UserMainScreenState extends State<UserMainScreen> {
   var selectedPageIndex = 0;
 
   var pages = <Widget>[
-    ReferencesScreen(),
-    StructureScreen(),
-    UserFirstScreen(),
+    const UserFirstScreen(),
+    const ReferencesScreen(),
+    const StructureScreen(),
     const Text(
       'Аккаунт',
     ),

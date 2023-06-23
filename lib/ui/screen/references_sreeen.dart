@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tree_green_screen_flutter/theme/colors_theme.dart';
+import 'package:tree_green_screen_flutter/theme/style_text.dart';
 import 'package:tree_green_screen_flutter/ui/component/dicit_input_widget.dart';
 
 class ReferencesScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class ReferencesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Справки и заявления',
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: StyleTextCustom.textAppBar,
         ),
         backgroundColor: ColorsForWidget.colorGreen,
       ),
@@ -46,7 +47,8 @@ class ReferencesScreen extends StatelessWidget {
                   child: TextButton(
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (BuildContext context) => _AlertDialogWidget(),
+                      builder: (BuildContext context) =>
+                          const _AlertDialogWidget(),
                     ),
                     child: const Text(
                       'СОЗДАТЬ ЗАЯВКУ',

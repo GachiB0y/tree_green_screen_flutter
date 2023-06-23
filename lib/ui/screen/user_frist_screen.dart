@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tree_green_screen_flutter/theme/colors_theme.dart';
+import 'package:tree_green_screen_flutter/theme/style_text.dart';
 
 const style =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white);
@@ -24,8 +25,8 @@ class UserFirstScreen extends StatelessWidget {
                     const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
                 child: CustomScrollView(
                   slivers: <Widget>[
-                    SliverPadding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
+                    const SliverPadding(
+                      padding: EdgeInsets.only(bottom: 16.0),
                       sliver: ColorSilverGridWidget(),
                     ),
                     SliverToBoxAdapter(
@@ -56,9 +57,7 @@ class UserFirstScreen extends StatelessWidget {
                               child: Material(
                                 color: Colors.transparent,
                                 child: InkWell(
-                                  onTap: () {
-                                    print('CLICK');
-                                  },
+                                  onTap: () {},
                                 ),
                               ),
                             ),
@@ -143,6 +142,8 @@ class ColorSilverGridWidget extends StatelessWidget {
     'assets/images/map.png',
   ];
 
+  const ColorSilverGridWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
@@ -182,9 +183,7 @@ class ColorSilverGridWidget extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: () {
-                      print('CLICK');
-                    },
+                    onTap: () {},
                   ),
                 ),
               ),
@@ -276,7 +275,7 @@ class ColorSilverGridWidget extends StatelessWidget {
 
 class _AppBarFirstScreen extends StatelessWidget
     implements PreferredSizeWidget {
-  const _AppBarFirstScreen({super.key});
+  const _AppBarFirstScreen();
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -309,11 +308,7 @@ class _AppBarFirstScreen extends StatelessWidget
       leading: const Avatar(),
       title: const Row(
         children: [
-          Text(
-            'Александр',
-            style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
-          ),
+          Text('Александр', style: StyleTextCustom.textAppBar),
           SizedBox(width: 4.0),
           Padding(
             padding: EdgeInsets.only(right: 16.0),
