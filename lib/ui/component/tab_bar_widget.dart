@@ -12,6 +12,7 @@ class TabBarWidget extends StatefulWidget {
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
+  final int number = 6;
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -36,6 +37,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
               ),
               text: 'Grass Coin'),
           Stack(
+            alignment: Alignment.topRight,
             children: [
               buildItem(
                   index: 2,
@@ -45,16 +47,26 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                     height: 30,
                   ),
                   text: 'Новости'),
-              const Positioned(
-                left: 26,
-                child: CircleAvatar(
-                  backgroundColor: Colors.red,
-                  radius: 6.5,
-                  child: Text(
-                    '6',
-                    style: TextStyle(fontSize: 11, color: Colors.white),
-                  ),
-                ),
+              Padding(
+                padding: number < 10
+                    ? const EdgeInsets.only(right: 8.0)
+                    : EdgeInsets.zero,
+                child: Container(
+                    padding: const EdgeInsets.only(
+                      left: 3.0,
+                      right: 3.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: ColorsForWidget.colorRed,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      number.toString(),
+                      style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    )),
               ),
             ],
           ),
@@ -80,23 +92,22 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     final isSelected = index == widget.index;
     return GestureDetector(
       onTap: () => widget.onChangeTab(index),
-      child: ColorFiltered(
-      colorFilter: ColorFilter.mode(
-            isSelected
-                ? ColorsForWidget.colorGreen
-                : ColorsForWidget.colorGrey,
-            BlendMode.modulate),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            img,
-            Text(
-              text,
-              style:
-                  const TextStyle(fontSize: 12, color: ColorsForWidget.colorGrey),
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                  isSelected
+                      ? ColorsForWidget.colorGreen
+                      : ColorsForWidget.colorGrey,
+                  BlendMode.modulate),
+              child: img),
+          Text(
+            text,
+            style:
+                const TextStyle(fontSize: 12, color: ColorsForWidget.colorGrey),
+          ),
+        ],
       ),
     );
   }

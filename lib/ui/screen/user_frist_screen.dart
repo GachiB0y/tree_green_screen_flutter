@@ -13,14 +13,15 @@ class UserFirstScreen extends StatelessWidget {
       backgroundColor: ColorsForWidget.colorGreen,
       appBar: const _AppBarFirstScreen(),
       body: Padding(
-        padding: const EdgeInsets.only(top:19.0),
+        padding: const EdgeInsets.only(top: 19.0),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           child: Container(
             color: Colors.white,
             child: Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
+                margin:
+                    const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
                 child: CustomScrollView(
                   slivers: <Widget>[
                     SliverPadding(
@@ -48,8 +49,7 @@ class UserFirstScreen extends StatelessWidget {
                             ),
                             Align(
                                 alignment: Alignment.bottomRight,
-                                child: Image.asset(
-                                    'assets/images/books.png')),
+                                child: Image.asset('assets/images/books.png')),
                             ClipRRect(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(14)),
@@ -279,48 +279,55 @@ class _AppBarFirstScreen extends StatelessWidget
   const _AppBarFirstScreen({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(70);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       actions: <Widget>[
-
+        Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: Container(
+            height: 34,
+            width: 34,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(70, 255, 255, 255),
+              borderRadius: BorderRadius.circular(17),
+            ),
+            child: MaterialButton(
+              onPressed: () {},
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(2),
+              shape: const CircleBorder(),
+              child: const Icon(
+                Icons.search,
+              ),
+            ),
+          ),
+        ),
       ],
       leading: const Avatar(),
-      title: Row(children: [
-         Text(
-          'Александр',
-          style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w600),
-        ),
-         SizedBox(width: 4.0),
-         Padding(
-           padding: EdgeInsets.only(right: 16.0),
-           child: SizedBox(
-            height: 24,
-            width: 24,
-            child:  Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.white,
-              size: 16,
-            ),
-        ),
-         ),
-        Container(
-          height: 34,
-          width: 34,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(70, 255, 255, 255),
-            borderRadius: BorderRadius.circular(25),
+      title: const Row(
+        children: [
+          Text(
+            'Александр',
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
           ),
-          child: IconButton(
-              icon: const Icon(
-                Icons.search,
+          SizedBox(width: 4.0),
+          Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: SizedBox(
+              height: 24,
+              width: 24,
+              child: Icon(
+                Icons.arrow_forward_ios,
                 color: Colors.white,
+                size: 16,
               ),
-              onPressed: () {}),
-        )
-      ],
+            ),
+          ),
+        ],
       ),
       backgroundColor: ColorsForWidget.colorGreen,
     );
@@ -335,26 +342,27 @@ class Avatar extends StatelessWidget {
     return Stack(
       children: [
         Container(
-        margin: EdgeInsets.only(left:16.0,),
-        child:
-            Center(
-              child: CircleAvatar(
-                radius: 17,
-                child: Image.asset(
-                  'assets/images/man.png',
-                  color: Colors.grey,
-                  fit: BoxFit.fill,
-                ),
+          margin: const EdgeInsets.only(
+            left: 16.0,
+          ),
+          child: Center(
+            child: CircleAvatar(
+              radius: 17,
+              child: Image.asset(
+                'assets/images/man.png',
+                color: Colors.grey,
+                fit: BoxFit.fill,
               ),
             ),
-      ),
+          ),
+        ),
         Align(
           alignment: Alignment.topRight,
           child: Container(
-              padding: EdgeInsets.all(2),
+              padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(14),
+                color: ColorsForWidget.colorRed,
+                borderRadius: BorderRadius.circular(12),
               ),
               child: const Text(
                 '123',
@@ -364,7 +372,7 @@ class Avatar extends StatelessWidget {
                     fontWeight: FontWeight.w600),
               )),
         ),
-    ],
+      ],
     );
   }
 }
