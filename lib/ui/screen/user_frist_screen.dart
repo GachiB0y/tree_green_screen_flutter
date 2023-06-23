@@ -341,31 +341,42 @@ class Avatar extends StatelessWidget {
             left: 16.0,
           ),
           child: Center(
-            child: CircleAvatar(
-              radius: 17,
-              child: Image.asset(
-                'assets/images/man.png',
-                color: Colors.grey,
-                fit: BoxFit.fill,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(17.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFFFFF),
+                  border: Border.all(
+                    width: 1,
+                    color: const Color(0xFFF2F2F2),
+                  ),
+                ),
+                child: Image.asset(
+                  'assets/images/man.png',
+                  color: const Color(0xFFCCCCCC),
+                ),
               ),
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Container(
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                color: ColorsForWidget.colorRed,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Text(
-                '123',
-                style: TextStyle(
-                    fontSize: 11,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600),
-              )),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Container(
+                padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                decoration: BoxDecoration(
+                  color: ColorsForWidget.colorRed,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  '123',
+                  style: TextStyle(
+                      fontSize: 11,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600),
+                )),
+          ),
         ),
       ],
     );
