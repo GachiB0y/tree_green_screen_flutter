@@ -1,5 +1,7 @@
 # tree_green_screen_flutter
 
+![til](./assets/example_gif.gif)
+
 A new Flutter project.
 
 ## Getting Started

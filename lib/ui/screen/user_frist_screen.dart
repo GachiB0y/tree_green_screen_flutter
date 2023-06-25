@@ -54,41 +54,8 @@ class _UserFirstScreenState extends State<UserFirstScreen> {
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 26.0),
-                      child: Container(
-
-                        height: _childSize?.height ?? 0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF58C18F),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Stack(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(left: 16.0, top: 16.0),
-                              child: Text(
-                                'Grass Википедия',
-                                softWrap: true,
-                                maxLines: 2,
-                                style: style,
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                            Align(
-                                alignment: Alignment.bottomRight,
-                                child: Image.asset('assets/images/books.png')),
-                            ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(14)),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: () {},
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      child:
+                      _GridElementWidget(colorElement: Color(0xFF58C18F), childSize: _childSize, text: 'Grass Википедия', pathImage: 'assets/images/books.png', index: null,),
                     ),
                   ),
                 ],
@@ -100,6 +67,63 @@ class _UserFirstScreenState extends State<UserFirstScreen> {
     );
   }
 }
+
+
+class _GridElementWidget extends StatelessWidget {
+  final Color colorElement;
+  Size? childSize;
+  final String text;
+  final String pathImage;
+  final int? index;
+   _GridElementWidget({Key? key, required this.colorElement, required this.childSize, required this.text, required this.pathImage, required this.index}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return
+      Container(
+      height: childSize != null ?  childSize?.height ?? 0 : 0,
+      decoration: BoxDecoration(
+        color: colorElement,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Stack(
+        children: [
+           Padding(
+            padding: const EdgeInsets.only(left: 16.0, top: 16.0),
+            child: Text(
+              text,
+              softWrap: true,
+              maxLines: 2,
+              style: StyleTextCustom.styleTextElementWhite,
+              textAlign: TextAlign.left,
+            ),
+          ),
+          Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(pathImage)),
+          ClipRRect(
+            borderRadius:
+            const BorderRadius.all(Radius.circular(14)),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  if (index == 0) {
+                    Navigator.pushNamed(context, 'page2');
+                  } else if (index == 6) {
+                    Navigator.pushNamed(context, 'page3');
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
 
 class ColorSilverGridWidget extends StatelessWidget {
 
@@ -156,46 +180,8 @@ class ColorSilverGridWidget extends StatelessWidget {
         return LayoutBuilder(
           key: index == 1 ? keyGridElement : null,
         builder: (BuildContext context, BoxConstraints constraints) {
-            return Container(
-              // height: 114,//MediaQuery.of(context).size.height / 5.23,
-              // width: 165,//MediaQuery.of(context).size.width / 2.27,
-              decoration: BoxDecoration(
-                color: colors[index],
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-                    child: Text(
-                      text[index],
-                      softWrap: true,
-                      maxLines: 2,
-                      style: style,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  Align(
-                      alignment: Alignment.bottomRight,
-                      child: Image.asset(pathImages[index])),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(14)),
-                    child: Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          if (index == 0) {
-                            Navigator.pushNamed(context, 'page2');
-                          } else if (index == 6) {
-                            Navigator.pushNamed(context, 'page3');
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return
+              _GridElementWidget(colorElement: colors[index], childSize: null, text: text[index], pathImage: pathImages[index], index: index,);
           }
         );
       },
@@ -306,10 +292,7 @@ class Avatar extends StatelessWidget {
                 ),
                 child: const Text(
                   '123',
-                  style: TextStyle(
-                      fontSize: 11,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600),
+                  style: StyleTextCustom.styleTextNotification,
                 )),
           ),
         ),

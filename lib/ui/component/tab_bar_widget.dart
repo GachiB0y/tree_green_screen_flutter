@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tree_green_screen_flutter/theme/colors_theme.dart';
+import 'package:tree_green_screen_flutter/theme/style_text.dart';
 
 class TabBarWidget extends StatefulWidget {
   final int index;
@@ -63,10 +64,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                     ),
                     child: Text(
                       number.toString(),
-                      style: const TextStyle(
-                          fontSize: 11,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
+                      style: StyleTextCustom.styleTextNotification,
                     )),
               ),
             ],
