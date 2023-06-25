@@ -16,6 +16,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      height: 74,
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,22 +93,23 @@ class _TabBarWidgetState extends State<TabBarWidget> {
     final isSelected = index == widget.index;
     return GestureDetector(
       onTap: () => widget.onChangeTab(index),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ColorFiltered(
-              colorFilter: ColorFilter.mode(
-                  isSelected
-                      ? ColorsForWidget.colorGreen
-                      : ColorsForWidget.colorGrey,
-                  BlendMode.modulate),
-              child: img),
-          Text(
-            text,
-            style:
-                const TextStyle(fontSize: 12, color: ColorsForWidget.colorGrey),
-          ),
-        ],
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+            isSelected
+                ? ColorsForWidget.colorGreen
+                : ColorsForWidget.colorGrey,
+            BlendMode.modulate),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            img,
+            Text(
+              text,
+              style:
+              const TextStyle(fontSize: 12, color: ColorsForWidget.colorGrey),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -25,52 +25,55 @@ class ReferencesScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.white,
-              size: 16,
+              size: 18,
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
         ),
       ),
-      body: ClipRRect(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 16.0, top: 20),
-                child: Text(
-                  'История заявок',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 16.0, right: 16.0, bottom: 11.0),
-                child: Container(
-                  height: 44,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: ColorsForWidget.colorGreen,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: TextButton(
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          const _AlertDialogWidget(),
-                    ),
-                    child: const Text(
-                      'СОЗДАТЬ ЗАЯВКУ',
-                      style: style,
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 12.0),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: Container(
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 16.0, top: 20),
+                  child: Text(
+                    'История заявок',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 16.0, right: 16.0, bottom: 11.0),
+                  child: Container(
+                    height: 44,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: ColorsForWidget.colorGreen,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: TextButton(
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const _AlertDialogWidget(),
+                      ),
+                      child: const Text(
+                        'СОЗДАТЬ ЗАЯВКУ',
+                        style: style,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

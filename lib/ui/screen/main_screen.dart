@@ -73,12 +73,9 @@ class _UserMainScreenState extends State<UserMainScreen> {
         },
       ),
       // pages[selectedPageIndex],
-      bottomNavigationBar: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.1,
-        child: TabBarWidget(
-            index: selectedPageIndex,
-            onChangeTab: (index) => onChangeTab(index)),
-      ),
+      bottomNavigationBar: TabBarWidget(
+          index: selectedPageIndex,
+          onChangeTab: (index) => onChangeTab(index)),
     );
   }
 }

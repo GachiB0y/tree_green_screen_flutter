@@ -29,7 +29,7 @@ class StructureScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.white,
-              size: 16,
+              size: 18,
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
@@ -239,6 +239,7 @@ class _DropListElement extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {

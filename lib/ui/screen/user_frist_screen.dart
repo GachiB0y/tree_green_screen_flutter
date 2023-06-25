@@ -5,11 +5,34 @@ import 'package:tree_green_screen_flutter/theme/style_text.dart';
 const style =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white);
 
-class UserFirstScreen extends StatelessWidget {
+class UserFirstScreen extends StatefulWidget {
   const UserFirstScreen({Key? key}) : super(key: key);
 
   @override
+  State<UserFirstScreen> createState() => _UserFirstScreenState();
+}
+
+
+
+class _UserFirstScreenState extends State<UserFirstScreen> {
+  final GlobalKey _childKey = GlobalKey();
+
+  Size? _childSize;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+  }
+
+  void _afterLayout(_) {
+    setState(() {
+      _childSize = _childKey.currentContext?.size;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: ColorsForWidget.colorGreen,
       appBar: const _AppBarFirstScreen(),
@@ -24,43 +47,47 @@ class UserFirstScreen extends StatelessWidget {
               margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 26.0),
               child: CustomScrollView(
                 slivers: <Widget>[
-                  const SliverPadding(
-                    padding: EdgeInsets.only(bottom: 16.0),
-                    sliver: ColorSilverGridWidget(),
+                   SliverPadding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    sliver: ColorSilverGridWidget(keyGridElement: _childKey,),
                   ),
                   SliverToBoxAdapter(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height / 5.23,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF58C18F),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Stack(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 16.0, top: 16.0),
-                            child: Text(
-                              'Grass Википедия',
-                              softWrap: true,
-                              maxLines: 2,
-                              style: style,
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          Align(
-                              alignment: Alignment.bottomRight,
-                              child: Image.asset('assets/images/books.png')),
-                          ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(14)),
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 26.0),
+                      child: Container(
+
+                        height: _childSize?.height ?? 0,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF58C18F),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Stack(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 16.0, top: 16.0),
+                              child: Text(
+                                'Grass Википедия',
+                                softWrap: true,
+                                maxLines: 2,
+                                style: style,
+                                textAlign: TextAlign.left,
                               ),
                             ),
-                          ),
-                        ],
+                            Align(
+                                alignment: Alignment.bottomRight,
+                                child: Image.asset('assets/images/books.png')),
+                            ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(14)),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {},
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -75,6 +102,9 @@ class UserFirstScreen extends StatelessWidget {
 }
 
 class ColorSilverGridWidget extends StatelessWidget {
+
+  final GlobalKey keyGridElement;
+
   final List<Color> colors = const [
     Color(0xFF6FD4D4),
     Color(0xFF72A5F4),
@@ -108,10 +138,11 @@ class ColorSilverGridWidget extends StatelessWidget {
     'assets/images/map.png',
   ];
 
-  const ColorSilverGridWidget({super.key});
+  const ColorSilverGridWidget({super.key, required this.keyGridElement});
 
   @override
   Widget build(BuildContext context) {
+
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -122,45 +153,50 @@ class ColorSilverGridWidget extends StatelessWidget {
       itemCount: colors.length,
       itemBuilder: (BuildContext context, int index) {
         // обычный контейнер
-        return Container(
-          // height: MediaQuery.of(context).size.height / 5.23,
-          // width: MediaQuery.of(context).size.width / 2.27,
-          decoration: BoxDecoration(
-            color: colors[index],
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-                child: Text(
-                  text[index],
-                  softWrap: true,
-                  maxLines: 2,
-                  style: style,
-                  textAlign: TextAlign.left,
-                ),
+        return LayoutBuilder(
+          key: index == 1 ? keyGridElement : null,
+        builder: (BuildContext context, BoxConstraints constraints) {
+            return Container(
+              // height: 114,//MediaQuery.of(context).size.height / 5.23,
+              // width: 165,//MediaQuery.of(context).size.width / 2.27,
+              decoration: BoxDecoration(
+                color: colors[index],
+                borderRadius: BorderRadius.circular(14),
               ),
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: Image.asset(pathImages[index])),
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(14)),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      if (index == 0) {
-                        Navigator.pushNamed(context, 'page2');
-                      } else if (index == 6) {
-                        Navigator.pushNamed(context, 'page3');
-                      }
-                    },
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0, top: 16.0),
+                    child: Text(
+                      text[index],
+                      softWrap: true,
+                      maxLines: 2,
+                      style: style,
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                ),
+                  Align(
+                      alignment: Alignment.bottomRight,
+                      child: Image.asset(pathImages[index])),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(14)),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          if (index == 0) {
+                            Navigator.pushNamed(context, 'page2');
+                          } else if (index == 6) {
+                            Navigator.pushNamed(context, 'page3');
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            );
+          }
         );
       },
     );
@@ -202,19 +238,19 @@ class _AppBarFirstScreen extends StatelessWidget
       leading: const Avatar(),
       title: Row(
         children: [
-          Text('Александр', style: StyleTextCustom.textAppBar),
-          SizedBox(width: 4.0),
+          const Text('Александр', style: StyleTextCustom.textAppBar),
+          const SizedBox(width: 4.0),
           Padding(
-            padding: EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 16.0),
             child: GestureDetector(
               onTap: () {},
-              child: SizedBox(
+              child: const SizedBox(
                 height: 24,
                 width: 24,
                 child: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.white,
-                  size: 16,
+                  size: 18,
                 ),
               ),
             ),
@@ -251,6 +287,8 @@ class Avatar extends StatelessWidget {
                 child: Image.asset(
                   'assets/images/man.png',
                   color: const Color(0xFFCCCCCC),
+                  height: 34,
+                  width: 34,
                 ),
               ),
             ),
